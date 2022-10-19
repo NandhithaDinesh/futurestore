@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container-fluid">
+    <div class="row">
+        {%for cart in carts%}
+        <div class="col-2"></div>
+        <div class="col-6 mt-3">
+            <div class="card h-100  border-secondary">
+                <!-- Product image-->
+                <img class="card-img-top" src="{{cart.product.image.url}}" height="500px" width="100px" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{cart.product.product_name}}</h5>
+                        <!-- Product price-->
+                        ${{cart.product.price}}
+                       
+                            <!-- {%if cart.status != "cancelled"%}
+                            <a href="{%url 'remove-item' cart.id %}" class="btn btn-outline-danger">Remove</a>
+                            {%endif%}
+                            {%if cart.status != "order-placed"%}
+                            <a href="{%url 'place-order' cart.id cart.product.id%}" class="btn btn-outline-success">Checkout</a>
+                            {%endif%} -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="col-2 mt-5">
+            Qty:{{cart.qty}}<br>
+            status:{{cart.status}}
+        </div>
+        <div class="col-2 mt-5">
+            <!-- {%if cart.status == "order-placed"%}
+                            <a href="{%url 'remove-item' cart.id %}" class="btn btn-outline-danger">Remove</a>
+                            {%endif%} -->
+                            {%if cart.status == "in-cart"%}
+                            <a href="{%url 'remove-item' cart.id %}" class="btn btn-outline-danger">Remove</a>
+                            <a href="{%url 'place-order' cart.id cart.product.id%}" class="btn btn-outline-success">Checkout</a>
+
+                            {%endif%}
+        </div>
+        {%endfor%}
+    </div>
+    
+</div>
+<!-- <h1>Welcome user {{request.user}}</h1>
+{{products}} -->
+{%endblock%}

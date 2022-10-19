@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card h-100 w-100 border-secondary">
+                <!-- Product image-->
+                <img class="card-img-top" src="{{product.image.url}}" height="100%" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{product.product_name}}</h5>
+                        <!-- Product price-->
+                        ${{product.price}}
+                        <p>
+                            {{product.description}}
+                        </p>
+                        <p>{{product.category}}</p>
+                    </div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{%url 'addto-cart' product.id%}">Add to cart</a></div>
+
+                </div>
+            </div>
+       
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{%endblock%}
